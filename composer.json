@@ -1,0 +1,19 @@
+{
+    "name": "thaonp/aht_mvc",
+    "description": "demo mvc",
+    "authors": [
+        {
+            "name": "thaonp",
+            "email": "nguyenphuongthao12041998@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Config\\": "Config/",
+            "Controllers\\": "Controllers/",
+            "Core\\": "Core/",
+            "Models\\": "Models/"
+        }
+    }
+}
