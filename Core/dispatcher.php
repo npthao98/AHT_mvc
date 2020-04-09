@@ -3,7 +3,6 @@ namespace Core;
 
 class Dispatcher
 {
-
     private $request;
 
     public function dispatch()
@@ -35,8 +34,5 @@ class Dispatcher
         } else {
             return "not found";
         }
-
     }
-
 }
-?>

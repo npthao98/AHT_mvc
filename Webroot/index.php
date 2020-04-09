@@ -11,21 +11,6 @@ use Core\Dispatcher;
 $dispatch = new Dispatcher();
 $dispatch->dispatch();
 
-//use Models\TaskModel;
-//
-//$task = new TaskModel();
-//$task->setId(1);
-//$task->setTitle('thao');
-//$task->setDescription('skjldsd');
-//$attributes = "";
-//$values = "";
-//$ars = $task->getProperties();
-//foreach ($ars as $ar => $va){
-//    if ($ar != "id") {
-//        $attributes = $attributes.$ar." = :".$ar.", ";
-//    }
-//}
-//echo $attributes;
 
 
 

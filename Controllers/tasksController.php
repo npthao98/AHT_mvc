@@ -16,20 +16,15 @@ class tasksController extends Controller
 
     function create()
     {
-        if (isset($_POST["title"]))
-        {
+        if (isset($_POST["title"])) {
             $task= new TaskRespository();
             $model = [
                 'title' => $_POST["title"],
                 'description' => $_POST["description"]
             ];
-
-            if ($task->add($model))
-            {
-                header("Location: " . WEBROOT . "tasks/index");
-            }
+            $task->add($model);
+            header("Location: " . WEBROOT . "tasks/index");
         }
-
         $this->render("create");
     }
 
@@ -41,8 +36,7 @@ class tasksController extends Controller
 
             $d["task"] = $task->get($id);
 
-            if (isset($_POST["title"]))
-            {
+            if (isset($_POST["title"])) {
                 $model = [
                     "id" => $id,
                     "title" => $_POST["title"],
