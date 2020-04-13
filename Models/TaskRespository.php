@@ -1,8 +1,6 @@
 <?php
 namespace Models;
 
-//use Models\Task;
-
 class TaskRespository
 {
     public function add($model)

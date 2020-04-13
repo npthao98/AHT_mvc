@@ -22,8 +22,7 @@ class Controller
 
         if ($this->layout == false) {
             $content_for_layout;
-        }
-        else {
+        } else {
             require(ROOT . "Views/Layouts/" . $this->layout . '.php');
         }
     }
