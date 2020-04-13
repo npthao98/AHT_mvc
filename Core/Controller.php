@@ -9,6 +9,7 @@ class Controller
     function set($d)
     {
         $this->vars = array_merge($this->vars, $d);
+        return $this->vars;
     }
 
     function render($filename)

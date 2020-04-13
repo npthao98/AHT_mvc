@@ -1,51 +1,54 @@
 <?php
 namespace Models;
 
-use Config\Db;
-use Models\TaskModel;
-use Models\TaskResourceModel;
-use PDO;
+//use Models\Task;
 
 class TaskRespository
 {
     public function add($model)
     {
-        $task = new TaskModel();
+        require_once "../bootstrap.php";
+        $task = new Task();
         $task->setTitle($model['title']);
         $task->setDescription($model['description']);
-        $taskRM = new TaskResourceModel();
-        $taskRM->save($task);
+        $entity_manager->persist($task);
+        $entity_manager->flush();
     }
 
     public function update($model)
     {
-        $task = new TaskModel();
-        $task->setId($model['id']);
+        require "../bootstrap.php";
+        $task = $entity_manager->find("Models\Task", $model['id']);
+
+        if ($task === null) {
+            echo "Task ".$model['id']." does not exist.\n";
+            exit(1);
+        }
+
         $task->setTitle($model['title']);
         $task->setDescription($model['description']);
-        $taskRM = new TaskResourceModel();
-        $taskRM->save($task);
+        $entity_manager->flush();
     }
 
     public function get($id)
     {
-        $taskRM = new TaskResourceModel();
-        $result = $taskRM->get($id);
-        return $result;
+        require "../bootstrap.php";
+        $task = $entity_manager->find("Models\Task", $id);
+        return $task;
     }
 
     public function getAll()
     {
-        $taskRM = new TaskResourceModel();
-        $result = $taskRM->get();
-        return $result;
+        require_once "../bootstrap.php";
+        $records = $entity_manager->getRepository("Models\Task")->findAll();
+        return $records;
     }
 
     public function delete($model)
     {
-        $task = new TaskModel();
-        $task->setId($model['id']);
-        $taskRM = new TaskResourceModel();
-        $taskRM->delete($task);
+        require "../bootstrap.php";
+        $task = $entity_manager->find("Models\Task", $model[id]);
+        $entity_manager->remove($task);
+        $entity_manager->flush();
     }
 }

@@ -7,13 +7,16 @@
             "email": "nguyenphuongthao12041998@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "doctrine/orm": "^2.6"
+    },
     "autoload": {
         "psr-4": {
             "Config\\": "Config/",
             "Controllers\\": "Controllers/",
             "Core\\": "Core/",
-            "Models\\": "Models/"
+            "Models\\": "Models/",
+            "Doctrine\\": "doctrine/"
         }
     }
 }

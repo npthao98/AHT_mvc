@@ -9,7 +9,15 @@ class tasksController extends Controller
     function index()
     {
         $tasks = new TaskRespository();
-        $d['tasks'] = $tasks->getAll();
+        $tasks = $tasks->getAll();
+        $ar = [];
+        foreach ($tasks as $task) {
+            $ar1['id'] = $task->getId();
+            $ar1['title'] = $task->getTitle();
+            $ar1['description'] = $task->getDescription();
+            $ar[] = $ar1;
+        }
+        $d['tasks'] = $ar;
         $this->set($d);
         $this->render("index");
     }
@@ -33,9 +41,10 @@ class tasksController extends Controller
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $task= new TaskRespository();
-
-            $d["task"] = $task->get($id);
-
+            $item = $task->get($id);
+            $d["task"]['id'] = $item->getId();
+            $d["task"]['title'] = $item->getTitle();
+            $d["task"]['description'] = $item->getDescription();
             if (isset($_POST["title"])) {
                 $model = [
                     "id" => $id,
